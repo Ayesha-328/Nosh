@@ -1,5 +1,7 @@
 import React,{useEffect} from 'react'
 import "../App.css"
+import { Link } from 'react-router-dom';
+
 // import aboutContent from '../pages/about/about.html';
 
 function About() {
@@ -12,9 +14,9 @@ function About() {
         const slides = document.querySelector('.slides');
         const dots = document.querySelectorAll('.dot');
 
-        console.log('Slider:', slider);
-        console.log('Slides:', slides);
-        console.log('Dots:', dots);
+        // console.log('Slider:', slider);
+        // console.log('Slides:', slides);
+        // console.log('Dots:', dots);
 
         if (!slider || !slides || !dots.length) {
             console.error('One or more required elements are missing');
@@ -77,7 +79,7 @@ function About() {
                         </p>
                     </div>
                     <div className="about-story-img-wrapper">
-                        <img src="../../assets/image_ourStory_1.png" alt="Our Story"/>
+                        <img src="/assets/image_about_1.png" alt="Our Story"/>
                     </div>
                 </div>
             </section>
@@ -88,11 +90,11 @@ function About() {
                         <h3 className="section-sub-heading">TASTY AND CRUNCHY</h3>
                         <h2 className="section-main-heading">Our Chef</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidition ullamco laboris nisi ut aliquip ex ea commodo condor consectetur adipiscing elit, sed do eiusmod tempor incidition ullam.</p>
-                        <button className="btn">VIEW OUR ALL MENU</button>
+                        <Link to="/menu"><button className="btn">VIEW OUR ALL MENU</button></Link>
                     </div>
     
                     <div className="about-chef-img-wrapper">
-                        <img src="../../assets/image_ourChef.png" alt=""/>
+                        <img src="/assets/image_ourChef.png" alt=""/>
                     </div>
                 </section>
             </div>
@@ -157,7 +159,7 @@ function About() {
                 <div className="about-team-container">
                     <div className="about-team-hero">
                         <div className="about-team-img-wrapper">
-                            <img src="../../assets/image_ourTeam_1.png" alt=""/>
+                            <img src="/assets/image_ourTeam_1.png" alt=""/>
                         </div>
                         <div className="about-team-desc">
                             <h3 className="section-sub-heading">Brain Adams</h3>
@@ -174,7 +176,7 @@ function About() {
                     </div>
                     <div className="about-team-hero">
                         <div className="about-team-img-wrapper">
-                            <img src="../../assets/image_ourTeam_2.png" alt=""/>
+                            <img src="/assets/image_ourTeam_2.png" alt=""/>
                         </div>
                         <div className="about-team-desc">
                             <h3 className="section-sub-heading">Brain Adams</h3>
@@ -191,7 +193,7 @@ function About() {
                     </div>
                     <div className="about-team-hero">
                         <div className="about-team-img-wrapper">
-                            <img src="../../assets/image_ourTeam_3.png" alt=""/>
+                            <img src="/assets/image_ourTeam_3.png" alt=""/>
                         </div>
                         <div className="about-team-desc">
                             <h3 className="section-sub-heading">Brain Adams</h3>
