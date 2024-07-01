@@ -12,3 +12,27 @@
 .navbar .profile{
     width: 40px;
 }
+.navbar .login-admin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.navbar .login-admin img{
+    width: 35px;
+}
+.navbar .login-admin p{
+    font-size: 14px;
+}
+.navbar .login-side-options{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.login-side-options .btn{
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: 0;
+    height: 40px
+}

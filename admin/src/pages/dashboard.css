@@ -1,0 +1,111 @@
+.dashboard{
+    width: 70%;
+    margin-left: max(5vw,25px);
+    margin-top: 50px;
+}
+.dashboard h1{
+    text-transform: capitalize;
+    font-size: 40px;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+.dashboard p{
+    font-size: 18px;
+    color: rgb(138, 134, 134);
+    font-weight: 600;
+}
+.dashboard-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add some space between rows */
+    margin-top: 30px;
+}
+
+.dashboard-layout .row {
+    display: flex;
+    color: rgb(105, 97, 97);
+    gap: 20px; /* Add some space between the columns */
+}
+
+.orders, .sales {
+    flex: 1; /* Take equal width */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: var(--section-bg);
+    color: rgb(105, 97, 97);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.orders{
+    position: relative;
+}
+
+.sales p{
+    margin-top: 20px;
+    color: black;
+    font-size: 60px;
+    font-weight: 500;
+}
+.sales p span{
+    font-size: 18px;
+
+}
+.orders p{
+    color: var(--secondary-color);
+    font-weight: 400;
+    font-size: 16px;
+}
+.orders .orders-number{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 10px;
+    top: 10px;
+    color: white;
+    font-size: 24px;
+    background-color: var(--primary-color);
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    border-radius: 50%;
+}
+.order-status{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category {
+    width: 100%; /* Take full width */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+.category >h3{
+    margin-bottom: 20px;
+}
+.dashboard .list-table-format{
+    grid-template-columns: 1fr 2fr 1fr ;
+}
+.dashboard .list-table-format p{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+@media(max-width:600px){
+
+    .list-table-format{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+    }
+    .dashboard-layout .row {
+        flex-direction: column; /* Stack the items vertically */
+    }
+
+    .orders, .sales {
+        width: 100%; /* Take full width */
+    }
+}

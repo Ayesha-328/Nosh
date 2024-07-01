@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import axios from "axios"
 
 
-const Add = ({url}) => {
+const Add = ({url,token}) => {
     const [image,setImage] = useState(false)
     const [formData,setFormData] = useState({
         name:"",
@@ -14,7 +14,6 @@ const Add = ({url}) => {
         price:"",
         category:"Deals"
     })
-    console.log(formData)
 
     function onChangeHandler(e){
         e.preventDefault();
@@ -29,28 +28,6 @@ const Add = ({url}) => {
 
     const onSubmitHandler = async (e)=>{
         e.preventDefault();
-        // const data = new FormData();
-        // data.append("itemName",formData.name)
-        // data.append("itemDescription",formData.description)
-        // data.append("category",formData.category)
-        // data.append("price",Number(formData.price))
-        // // data.append("image",image)
-        // const response = await axios.post(`${url}/add`,data);
-        // if(response){
-        //     console.log(response)
-        //     setFormData({
-        //         name:"",
-        //         description:"",
-        //         price:"",
-        //         category:"Deals"
-        //     })
-        //     setImage(false)
-        //     toast.success("Added successfully")
-        // }
-        // else{
-        //     toast.error("Can't add please try again")
-            
-        // }
         try {
             const body={
                 itemName:formData.name,
@@ -59,9 +36,13 @@ const Add = ({url}) => {
                 category:formData.category,
                 price:formData.price
             }
+            // const token = localStorage.getItem('token');
             const response = await fetch(`${url}/add`,{
                 method:"POST",
-                headers:{"Content-type":"application/json"},
+                headers:{
+                    "Content-type":"application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body:JSON.stringify(body)
             })
             if(response.status===200){

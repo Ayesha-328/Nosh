@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { assets } from '../assets/assets';
 import "./add.css"
 
-const Update = ({ url }) => {
+const Update = ({ url,token }) => {
     const { id } = useParams();
     const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Update = ({ url }) => {
         const response = await axios.get(`${url}/list/${id}`);
         if (response.status === 200) {
             const data=response.data;
-            console.log(response.data)
+            // console.log(response.data)
           setFormData({
             name:data.itemname,
             description:data.itemdescription,
@@ -48,13 +48,21 @@ const Update = ({ url }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`${url}/list/${id}`, {
-        itemName:formData.name,
-        itemDescription:formData.description,
-        itemImageUrl:formData.imageUrl,
-        category:formData.category,
-        price:formData.price
-      });
+      const response = await axios.put(
+        `${url}/list/${id}`,
+        {
+            itemName: formData.name,
+            itemDescription: formData.description,
+            itemImageUrl: formData.imageUrl,
+            category: formData.category,
+            price: formData.price
+        },
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+    );
       if (response.status === 200) {
         toast.success("Menu item updated successfully");
         navigate('/list');

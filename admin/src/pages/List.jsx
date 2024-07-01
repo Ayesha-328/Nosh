@@ -4,13 +4,17 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
 
-const List = ({url}) => {
+const List = ({url,token}) => {
   
   const [list,setList] = useState([]);
   const navigate = useNavigate();
 
   const fetchList= async ()=>{
-    const response= await axios.get(`${url}/list`);
+    const response= await axios.get(`${url}/list`,{
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  });
     // console.log(response)
     if(response.status===200){
       setList(response.data);
@@ -21,7 +25,11 @@ const List = ({url}) => {
   }
 
   const removeMenuItem = async(itemId)=>{
-    const response= await axios.delete(`${url}/list/${itemId}`)
+    const response= await axios.delete(`${url}/list/${itemId}`,{
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  })
     await fetchList();
     if(response.status===200){
       toast.success("Menu item has been successfully deleted")

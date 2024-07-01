@@ -4,11 +4,15 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { assets } from '../assets/assets';
 
-const Orders = ({url}) => {
+const Orders = ({url,token}) => {
   const [orders,setOrders]= useState([]);
 
   const fetchAllOrders= async()=>{
-    const response=await axios.get(`${url}/orders`);
+    const response=await axios.get(`${url}/orders`,{
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  });
     if(response.status===200){
       setOrders(response.data);
     }
@@ -19,10 +23,15 @@ const Orders = ({url}) => {
 
   const statusHandler=async(e,orderId)=>{
     const {value}= e.target;
-    console.log(value)
+    // console.log(value)
     const response=await axios.put(`${url}/orders/${orderId}`,{
       ostatus:value
-    })
+    },
+    {
+      headers: {
+          'Authorization': `Bearer ${token}`
+      }
+  })
 
     if(response.status===200){
       await fetchAllOrders();
